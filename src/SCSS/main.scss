@@ -1,0 +1,49 @@
+// Import partials SCSS
+@import './base';
+@import './variables';
+@import './functions';
+@import './mixins';
+
+
+body {
+    font-weight: 1rem;
+    color: $etxt_color;
+    background-color: $primary_color;
+    font-weight: weight(regular);
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.main {
+    @include flexCenter(row);
+
+    #{&}__para1 {
+        //interpolation for wrapping previous class as well
+        font-weight: weight(regular);
+        transition: all .3s ease;
+        margin-bottom: 20px;
+
+        &:hover {
+            color: pink;
+        }
+    }
+
+    #{&}__para2 {
+        @extend .main__para1;
+
+        &:hover {
+            color: $accent_color;
+        }
+    }
+
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
+.light {
+    @include theme(false);
+}
